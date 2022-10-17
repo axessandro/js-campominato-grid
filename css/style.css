@@ -33,3 +33,7 @@ body{
     align-items: center;
     cursor: pointer;
 }
+
+.clicked-btn{
+    background-color: rgba(255, 255, 255, 0.406);
+}

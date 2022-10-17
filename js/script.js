@@ -6,29 +6,30 @@
 const playBtn = document.getElementById("play-btn");
 console.log(playBtn);
 const wrapper = document.getElementById("wrapper");
-const arrayRndOrder = rndNumberOrderGen(100);
-
-console.log(rndNumberOrderGen.length);
+let arrayRndOrder = [];
 
 // at click
 playBtn.addEventListener("click", function(){
-    if (arrayRndOrder.length != 0) {
+    if (arrayRndOrder.length) {
         wrapper.innerHTML = "";
-        arrayRndOrder.length = 0;
+        arrayRndOrder = [];
     }
+    
+    arrayRndOrder = rndNumberOrderGen(100);
 
+    
     for (let i = 0; i < arrayRndOrder.length; i++){
         const thisNumber = arrayRndOrder[i];
         // generate cells
         const thisCell = cellGenerator();
-        
+        // at cells click
+        thisCell.addEventListener("click", cellClick)
         // apppend thisNumber to cells
         thisCell.append(thisNumber)
         // append cells on DOM
         wrapper.append(thisCell)
     };
 });
-
 
 
 // FUNCTIONS
@@ -63,4 +64,8 @@ function cellGenerator() {
     cell.classList.add("cellx100");
     //  return cells
     return cell;
+}
+
+function cellClick(){
+    this.classList.toggle("clicked-btn")
 }
