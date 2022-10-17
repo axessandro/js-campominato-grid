@@ -12,15 +12,16 @@ console.log(rndNumberOrderGen.length);
 
 // at click
 playBtn.addEventListener("click", function(){
-
-    if (rndNumberOrderGen.length != 0) {
-        rndNumberOrderGen.length = 0;
+    if (arrayRndOrder.length != 0) {
+        wrapper.innerHTML = "";
+        arrayRndOrder.length = 0;
     }
 
     for (let i = 0; i < arrayRndOrder.length; i++){
         const thisNumber = arrayRndOrder[i];
         // generate cells
         const thisCell = cellGenerator();
+        
         // apppend thisNumber to cells
         thisCell.append(thisNumber)
         // append cells on DOM
